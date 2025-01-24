@@ -99,6 +99,6 @@ affinity: {}
 configMap:
   enabled: true
   data:
-    API_KEY: "BeanMiQRS8vdScecrACWgg7wZhnKXheWccg74NGA"
-    ZONE: "rdvl.net"
-    SUBDOMAIN: ""
+    API_KEY: "your-cloudflare-api-key"
+    ZONE: "example.com"
+    SUBDOMAIN: "optional-subdomain"

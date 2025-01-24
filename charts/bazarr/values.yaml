@@ -60,17 +60,17 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "cloudflare-tunnel"
+  className: "traefik"
   annotations:
     cert-manager.io/cluster-issuer: "le-cluster-issuer"
   hosts:
-    - host: bazarr.rdvl.net
+    - host: bazarr.change.me
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - bazarr.rdvl.net
+        - bazarr.change.me
       secretName: bazarr-tls
 
 resources: {}

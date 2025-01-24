@@ -60,17 +60,17 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "cloudflare-tunnel"
+  className: "traefik"
   annotations:
     cert-manager.io/cluster-issuer: "le-cluster-issuer"
   hosts:
-    - host: qbittorrent.rdvl.net
+    - host: qbittorrent.change.me
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - qbittorrent.rdvl.net
+        - qbittorrent.change.me
       secretName: qbittorrent-tls
 
 resources: {}
@@ -107,8 +107,8 @@ volumes:
 configMap:
   enabled: true
   data:
-    PUID: "0"
-    PGID: "0"
+    PUID: "1000"
+    PGID: "1000"
     TZ: "Europe/Madrid"
 
 # Additional volumeMounts on the output Deployment definition.
