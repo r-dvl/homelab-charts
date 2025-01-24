@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich-machine-learning
+  labels:
+    {{- include "immich-machine-learning.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.immichMachineLearning.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "immich-machine-learning.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.immichMachineLearning.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "immich-machine-learning.labels" . | nindent 8 }}
+        {{- with .Values.immichMachineLearning.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.immichMachineLearning.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.global.serviceAccount.name | quote }}
+      securityContext:
+        {{- toYaml .Values.immichMachineLearning.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          env:
+            - name: DB_DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: immich-machine-learning-config
+                  key: DB_DATABASE_NAME
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: immich-machine-learning-config
+                  key: DB_PORT
+            - name: REDIS_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: immich-machine-learning-config
+                  key: REDIS_HOSTNAME
+            - name: DB_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: immich-machine-learning-config
+                  key: DB_HOSTNAME
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: immich-machine-learning-secrets
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: immich-machine-learning-secrets
+                  key: DB_PASSWORD
+          securityContext:
+            {{- toYaml .Values.immichMachineLearning.securityContext | nindent 12 }}
+          image: "{{ .Values.immichMachineLearning.image.repository }}:{{ .Values.immichMachineLearning.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.immichMachineLearning.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.immichMachineLearning.service.port }}
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.immichMachineLearning.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.immichMachineLearning.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.immichMachineLearning.resources | nindent 12 }}
+          {{- with .Values.immichMachineLearning.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.immichMachineLearning.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.immichMachineLearning.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.immichMachineLearning.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.immichMachineLearning.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

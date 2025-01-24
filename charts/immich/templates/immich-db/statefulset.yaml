@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: immich-db
+  labels:
+    {{- include "immich-db.labels" . | nindent 4 }}
+spec:
+  serviceName: "immich-db"
+  replicas: {{ .Values.immichDb.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "immich-db.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.immichDb.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "immich-db.labels" . | nindent 8 }}
+        {{- with .Values.immichDb.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.immichDb.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.global.serviceAccount.name | quote }}
+      securityContext:
+        {{- toYaml .Values.immichDb.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: immich-db-config
+                  key: POSTGRES_DB
+            - name: POSTGRES_INITDB_ARGS
+              valueFrom:
+                configMapKeyRef:
+                  name: immich-db-config
+                  key: POSTGRES_INITDB_ARGS
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: immich-db-secrets
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: immich-db-secrets
+                  key: POSTGRES_PASSWORD
+          command: ["postgres"]
+          args: ["-c", "shared_preload_libraries=vectors.so", "-c", 'search_path="$$user", public, vectors', "-c", "logging_collector=on", "-c", "max_wal_size=2GB", "-c", "shared_buffers=512MB", "-c", "wal_compression=on"]
+          securityContext:
+            {{- toYaml .Values.immichDb.securityContext | nindent 12 }}
+          image: "{{ .Values.immichDb.image.repository }}:{{ .Values.immichDb.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.immichDb.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.immichDb.service.port }}
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.immichDb.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.immichDb.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.immichDb.resources | nindent 12 }}
+          volumeMounts:
+            {{- toYaml .Values.immichDb.volumeMounts | nindent 12 }}
+      volumes:
+        {{- toYaml .Values.immichDb.volumes | nindent 8 }}
+  updateStrategy:
+    type: RollingUpdate
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  {{- with .Values.immichDb.nodeSelector }}
+  nodeSelector:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  {{- with .Values.immichDb.affinity }}
+  affinity:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  {{- with .Values.immichDb.tolerations }}
+  tolerations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
