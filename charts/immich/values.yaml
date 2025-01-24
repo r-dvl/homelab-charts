@@ -1,0 +1,156 @@
+global:
+  serviceAccount:
+    create: true
+    automount: true
+    annotations: {}
+    name: "immich"
+
+immichDb:
+  replicaCount: 1
+  revisionHistoryLimit: 2
+
+  image:
+    repository: tensorchord/pgvecto-rs
+    pullPolicy: IfNotPresent
+    tag: "pg14-v0.2.0"
+
+  securityContext:
+    runAsUser: 999
+
+  service:
+    type: ClusterIP
+    port: 5432
+
+  # Additional volumes on the output Deployment definition.
+  volumes:
+    - name: config-volume
+      persistentVolumeClaim:
+        claimName: immich-pvc
+      
+  # Additional volumeMounts on the output Deployment definition.
+  volumeMounts:
+    - name: config-volume
+      mountPath: /var/lib/postgresql/data
+
+  configMap:
+    enabled: true
+    data:
+      POSTGRES_DB: "immich"
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+
+  secrets:
+    POSTGRES_USER: cG9zdGdyZXM=
+    POSTGRES_PASSWORD: c2VjcmV0
+
+# ---
+
+immichMachineLearning:
+  replicaCount: 1
+  revisionHistoryLimit: 2
+
+  image:
+    repository: ghcr.io/immich-app/immich-machine-learning
+    pullPolicy: IfNotPresent
+    tag: "release"
+
+  service:
+    type: ClusterIP
+    port: 3003
+
+  # Additional volumes on the output Deployment definition.
+  volumes:
+    - name: cache-volume
+      hostPath:
+        path: /DATA/AppData/immich/data/model-cache
+        type: DirectoryOrCreate
+
+ # Additional volumeMounts on the output Deployment definition.
+  volumeMounts:
+    - name: cache-volume
+      mountPath: /cache
+
+  configMap:
+    enabled: true
+    data:
+      DB_DATABASE_NAME: "immich"
+      DB_PORT: "5432"
+      REDIS_HOSTNAME: "immich-redis"
+      DB_HOSTNAME: "immich-db"
+
+  secrets:
+    DB_USERNAME: cG9zdGdyZXM=
+    DB_PASSWORD: c2VjcmV0
+
+# ---
+
+immichRedis:
+  replicaCount: 1
+  revisionHistoryLimit: 2
+
+  image:
+    repository: redis
+    pullPolicy: IfNotPresent
+    tag: "6.2-alpine"
+
+  service:
+    type: ClusterIP
+    port: 6379
+
+# ---
+
+immichServer:
+  replicaCount: 1
+  revisionHistoryLimit: 2
+
+  image:
+    repository: ghcr.io/immich-app/immich-server
+    pullPolicy: IfNotPresent
+    tag: "release"
+
+  service:
+    type: ClusterIP
+    port: 2283
+
+  # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+  ingress:
+    enabled: true
+    className: "nginx"
+    hosts:
+      - host: immich.rdvl.local
+        paths:
+          - path: /
+            pathType: Prefix
+
+  # Additional volumes on the output Deployment definition.
+  volumes:
+    - name: gallery-volume
+      hostPath:
+        path: /DATA/Gallery
+        type: DirectoryOrCreate
+
+    - name: localtime-volume
+      hostPath:
+        path: /etc/localtime
+        type: File
+
+  # Additional volumeMounts on the output Deployment definition.
+  volumeMounts:
+    - name: gallery-volume
+      mountPath: /usr/src/app/upload
+
+    - name: localtime-volume
+      mountPath: /etc/localtime
+      readOnly: true
+
+  configMap:
+    enabled: true
+    data:
+      DB_DATABASE_NAME: "immich"
+      DB_PORT: "5432"
+      REDIS_HOSTNAME: "immich-redis"
+      DB_HOSTNAME: "immich-db"
+      IMMICH_MACHINE_LEARNING_URL: "http://immich-machine-learning:3003"
+
+  secrets:
+    DB_USERNAME: cG9zdGdyZXM=
+    DB_PASSWORD: c2VjcmV0

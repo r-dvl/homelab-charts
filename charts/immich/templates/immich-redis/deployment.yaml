@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich-redis
+  labels:
+    {{- include "immich-redis.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.immichRedis.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "immich-redis.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.immichRedis.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "immich-redis.labels" . | nindent 8 }}
+        {{- with .Values.immichRedis.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.immichRedis.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ .Values.global.serviceAccount.name | quote }}
+      securityContext:
+        {{- toYaml .Values.immichRedis.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          env:
+            {{- range .Values.immichRedis.env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+            {{- end }}
+          securityContext:
+            {{- toYaml .Values.immichRedis.securityContext | nindent 12 }}
+          image: "{{ .Values.immichRedis.image.repository }}:{{ .Values.immichRedis.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.immichRedis.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.immichRedis.service.port }}
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.immichRedis.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.immichRedis.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.immichRedis.resources | nindent 12 }}
+          {{- with .Values.immichRedis.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.immichRedis.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.immichRedis.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.immichRedis.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.immichRedis.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

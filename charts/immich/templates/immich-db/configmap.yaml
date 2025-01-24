@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: immich-db-config
+data:
+  POSTGRES_DB: "{{ .Values.immichDb.configMap.data.POSTGRES_DB }}"
+  POSTGRES_INITDB_ARGS: "{{ .Values.immichDb.configMap.data.POSTGRES_INITDB_ARGS }}"
