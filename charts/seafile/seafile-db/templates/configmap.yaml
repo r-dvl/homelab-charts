@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ include "seafile-db.fullname" . }}-config
-data:
-  MYSQL_ROOT_PASSWORD: "{{ .Values.configMap.data.MYSQL_ROOT_PASSWORD }}"
-  MYSQL_LOG_CONSOLE: "{{ .Values.configMap.data.MYSQL_LOG_CONSOLE }}"
-  MARIADB_AUTO_UPGRADE: "{{ .Values.configMap.data.MARIADB_AUTO_UPGRADE }}"

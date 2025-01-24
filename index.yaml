@@ -1,3 +1,157 @@
 apiVersion: v1
-entries: {}
-generated: "2025-01-24T16:02:18.101729572+01:00"
+entries:
+  autoclaimer:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.664326156+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 193bb89f035a48e29d9f6498e8cb3e568ae91e17b6116125e8a5f7acb71d3b39
+    name: autoclaimer
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/autoclaimer-0.1.1.tgz
+    version: 0.1.1
+  bazarr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.664745777+01:00"
+    description: A Helm chart for Kubernetes
+    digest: a473eae5e6e87f73ae1c4713692c5f36e8d6c431a22035dc4f9d49af0d320d7b
+    name: bazarr
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/bazarr-0.1.3.tgz
+    version: 0.1.3
+  calibre-web:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.665107979+01:00"
+    description: A Helm chart for Kubernetes
+    digest: aa5a8e51c652dd94ab7b90c39ace8271b5a59e0aa935c8fc72820dd46e0aab37
+    name: calibre-web
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/calibre-web-0.1.3.tgz
+    version: 0.1.3
+  cloudflare-ddns:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.665362719+01:00"
+    description: A Helm chart for Kubernetes
+    digest: a91b3a80561d8e6dc4c9c23f4eb4d0da01f0bb3f2d80ba32c7a859b1e8c230b1
+    name: cloudflare-ddns
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/cloudflare-ddns-0.1.12.tgz
+    version: 0.1.12
+  cloudflared:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.665648598+01:00"
+    description: A Helm chart for Kubernetes
+    digest: bb454810a984fd39ca04d756ce3770383013407bd31bbe559dca55266512cbed
+    name: cloudflared
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/cloudflared-0.1.10.tgz
+    version: 0.1.10
+  jackett:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.66594124+01:00"
+    description: A Helm chart for Kubernetes
+    digest: a91fa9aad63989c162764b7602296fdcc7e41ea65c373049fcc7d9078f282458
+    name: jackett
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/jackett-0.1.2.tgz
+    version: 0.1.2
+  jellyfin:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.666276101+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 1df1e59d9ba9b5b59e1f04971b35821475929694e5aeb06719d1704caefa39d2
+    name: jellyfin
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/jellyfin-0.1.6.tgz
+    version: 0.1.6
+  jellyseerr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.666606854+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 3727fa49fc2f708aecd6ffa3bc6038716ac35fdced099da643f203b073a5f4d4
+    name: jellyseerr
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/jellyseerr-0.1.1.tgz
+    version: 0.1.1
+  plex:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.666948368+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 486f979bedbbe569a18ce5a50c1e133b058803d1c4b3668e0faf8af3975e4440
+    name: plex
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/plex-0.1.4.tgz
+    version: 0.1.4
+  prowlarr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.66724675+01:00"
+    description: A Helm chart for Kubernetes
+    digest: f61846f5e103611f52bc9733530575813c741f195cf1b853b771f179ceef424a
+    name: prowlarr
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/prowlarr-0.1.2.tgz
+    version: 0.1.2
+  qbittorrent:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.667582262+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 48c576a31876bdb9ae20eaaedc4ccc6a16fd5ffa9f88616ff098fea1cc0344db
+    name: qbittorrent
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/qbittorrent-0.1.1.tgz
+    version: 0.1.1
+  radarr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.667897236+01:00"
+    description: A Helm chart for Kubernetes
+    digest: cef2f2b8ce8ff1d84da68781afe0328c8167b201bc5d92a7ea7518d9f0f1538b
+    name: radarr
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/radarr-0.1.4.tgz
+    version: 0.1.4
+  sonarr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.66819107+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 8842857f74e69b4dd0de8a50dc998987f5010792e5ae56c27fd9ac92f56254e7
+    name: sonarr
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/sonarr-0.1.3.tgz
+    version: 0.1.3
+  vaultwarden:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-01-24T16:31:20.668517385+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 7d2d0a422a14fa373802135a3448834a2e5080be57f1f48bd77598aedc115790
+    name: vaultwarden
+    type: application
+    urls:
+    - https://github.com/r-dvl/helm-charts/vaultwarden-0.1.1.tgz
+    version: 0.1.1
+generated: "2025-01-24T16:31:20.663825843+01:00"
