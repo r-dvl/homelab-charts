@@ -1,4 +1,4 @@
-# Helm Charts
+# Homelab Charts
 ## Table of Contents
 
 - [Personal Helm Charts Repository](#personal-helm-charts-repository)
@@ -36,7 +36,7 @@ Each chart is located in its respective directory under the `charts` folder.
 To use any of these charts, add this repository to your Helm client:
 
 ```sh
-helm repo add my-homelab-charts https://r-dvl.github.io/helm-charts
+helm repo add my-homelab-charts https://r-dvl.github.io/homelab-charts
 helm repo update
 ```
 
@@ -63,9 +63,13 @@ To customize the values for each chart, you can create a `values.yaml` file. Thi
 For example, to customize the configuration for Jellyfin, you can create a `values.yaml` file with the following content:
 
 ```yaml
-config:
-    # Custom configuration for Jellyfin
-    someSetting: someValue
+configMap:
+  enabled: true
+  # Custom configuration for Jellyfin
+  data:
+    PUID: "1000"
+    PGID: "1000"
+    TZ: "Europe/Madrid"
 
 ingress:
     enabled: true
