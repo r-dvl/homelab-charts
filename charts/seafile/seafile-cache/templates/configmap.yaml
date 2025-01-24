@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "seafile-cache.fullname" . }}-config
+data:
+  DB_HOST: "{{ .Values.configMap.data.DB_HOST }}"
+  TIME_ZONE: "{{ .Values.configMap.data.TIME_ZONE }}"
+  SERVER_LETSENCRYPT: "{{ .Values.configMap.data.SERVER_LETSENCRYPT }}"
+  SERVER_HOSTNAME: "{{ .Values.configMap.data.SERVER_HOSTNAME }}"
