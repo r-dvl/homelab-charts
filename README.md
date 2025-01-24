@@ -28,6 +28,7 @@ This repository contains Helm charts and docs for self-hosted applications in my
 - **Radarr**: A movie collection manager for Usenet and BitTorrent users.
 - **Sonarr**: A PVR for Usenet and BitTorrent users to download TV shows.
 - **Vaultwarden**: An unofficial Bitwarden server implementation written in Rust.
+- **Immich**: A Google Photos substitution (Still needs some tunning, but it is usable as abase chart).
 
 Each chart is located in its respective directory under the `charts` folder.
 
