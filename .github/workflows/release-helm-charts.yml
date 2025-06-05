@@ -8,7 +8,7 @@ on:
       - 'charts/**'
 
 jobs:
-  build:
+  release-helm-charts:
     runs-on: ubuntu-latest
 
     steps:
