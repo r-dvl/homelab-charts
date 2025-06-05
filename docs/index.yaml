@@ -1,0 +1,214 @@
+apiVersion: v1
+entries:
+  backup-manager:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.468998157Z"
+    description: backup-manager is a companion application to Sonarr and Radarr that
+      manages and downloads subtitles.
+    digest: 4dbc021059fc8ef35bb1ae489fcfc23aed6f05ceda4e832d1832fa16e523d4d3
+    icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/backup-manager-light.png
+    name: backup-manager
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/backup-manager-1.2.0.tgz
+    version: 1.2.0
+  bazarr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.469465001Z"
+    description: Bazarr is a companion application to Sonarr and Radarr that manages
+      and downloads subtitles.
+    digest: 09d477aa04299aa390b4971512786b4d72f8abd6c893fe927881b11b6df4a01c
+    icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/bazarr-light.png
+    name: bazarr
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/bazarr-1.0.0.tgz
+    version: 1.0.0
+  calibre-web:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.469920864Z"
+    description: Calibre Web is a web app for browsing, reading and downloading eBooks
+      using an existing Calibre database.
+    digest: 837a89ead254a0a87753a85cd64e0d40d4866f567099d4176ca51309f825ada9
+    icon: https://th.bing.com/th/id/R.60f62bc8e9ee1df35780b8f96753f433?rik=ZIiztdszqSgXHw&pid=ImgRaw&r=0
+    name: calibre-web
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/calibre-web-1.0.0.tgz
+    version: 1.0.0
+  cloudflare-ddns:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.470293912Z"
+    description: Cloudflare Dynamic DNS is a simple Docker image for updating a Cloudflare
+      DNS record with your external IP address.
+    digest: 145f10f928c1de6a68e3fd18e81b458b66aaea11a6cace3ae11b5b9dd395712f
+    icon: https://static-00.iconduck.com/assets.00/cloudflare-icon-2048x926-mxn8koxq.png
+    name: cloudflare-ddns
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/cloudflare-ddns-1.0.0.tgz
+    version: 1.0.0
+  cloudflared:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.470669234Z"
+    description: Cloudflared is a simple Docker image for running Cloudflared.
+    digest: 4283f1d2ce5c766a465970913a4928a1f87ff8851f209d9a0a63d4785df6d3b4
+    icon: https://static-00.iconduck.com/assets.00/cloudflare-icon-2048x926-mxn8koxq.png
+    name: cloudflared
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/cloudflared-1.0.0.tgz
+    version: 1.0.0
+  immich:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.471251674Z"
+    description: Easily back up, organize, and manage your photos on your own server.
+    digest: 4141a5d32459322dc25e87a8e84efb90e66cd2579264b516d304c0fa45a09f84
+    icon: https://avatars.githubusercontent.com/u/109746326?s=200&v=4
+    name: immich
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/immich-1.0.0.tgz
+    version: 1.0.0
+  jackett:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.471632777Z"
+    description: API Support for your favorite torrent trackers.
+    digest: cc8c98a0d5ed8a1bcfc4d3b2965747a4bbcf1931b0b3aa8ca3b245349182dee7
+    icon: https://lignux.com/wp-content/uploads/2021/06/Jackett-logo.png
+    name: jackett
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/jackett-1.0.0.tgz
+    version: 1.0.0
+  jellyfin:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.472042594Z"
+    description: Jellyfin is a Free Software Media System that puts you in control
+      of managing and streaming your media.
+    digest: 27b5030915f0dc9c253d0f8f4a93eb50210f2053ce8b452cbb265df914376828
+    icon: https://www.openhab.org/logos/jellyfin.png
+    name: jellyfin
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/jellyfin-1.0.0.tgz
+    version: 1.0.0
+  jellyseerr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.472463783Z"
+    description: Request management and media discovery tool for the Jellyfin ecosystem.
+    digest: eefb1745fda3e5a2970779c23db5b7e664fd45df26146e3df0514c50630ca489
+    icon: https://docs.armbian.com/images/JEL001.png
+    name: jellyseerr
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/jellyseerr-1.0.0.tgz
+    version: 1.0.0
+  node-red:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.472842892Z"
+    description: Node-RED is a flow-based development tool for visual programming.
+    digest: 936e21b7652367d40413ab135789d1515daebd0e9bff8be9bdeb48e5d3966d13
+    name: node-red
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/node-red-1.0.0.tgz
+    version: 1.0.0
+  plex:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.473972426Z"
+    description: Plex is a media server that allows you to organize and stream your
+      media.
+    digest: 5a54f733bf34701e02c1afc665588f5d4d0e4e7a2a84c35e402fc388f7424955
+    icon: https://th.bing.com/th/id/OIP.D15448TzysfzP93bOo1auQAAAA?rs=1&pid=ImgDetMain
+    name: plex
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/plex-1.0.0.tgz
+    version: 1.0.0
+  prowlarr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.47441311Z"
+    description: Prowlarr is a newsgroup indexer manager.
+    digest: cb83d87ecf3804a0521030a9f241a5d642399d7273102ff9e4ce587f714bd86d
+    icon: https://static-00.iconduck.com/assets.00/prowlarr-icon-1024x1024-vyf0hy1t.png
+    name: prowlarr
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/prowlarr-1.0.0.tgz
+    version: 1.0.0
+  qbittorrent:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.474821605Z"
+    description: QBittorrent is a free, open-source, fast and lightweight P2P BitTorrent
+      client.
+    digest: 384db66355e55589e5e84b5802d1598a212d37e8d91091d9e5172d0181b8289a
+    icon: https://static-00.iconduck.com/assets.00/qbittorrent-icon-2048x2048-kbb7ayst.png
+    name: qbittorrent
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/qbittorrent-1.0.0.tgz
+    version: 1.0.0
+  qr-code-generator:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.475200894Z"
+    description: qr-code-generator is a simple Docker image for running qr-code-generator.
+    digest: 356052a81e648ee8185e0c2ac9e2675c1c3e3d74439e844338f3d108d3a3431f
+    icon: https://static-00.iconduck.com/assets.00/cloudflare-icon-2048x926-mxn8koxq.png
+    name: qr-code-generator
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/qr-code-generator-1.0.0.tgz
+    version: 1.0.0
+  radarr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.475741646Z"
+    description: Radarr is a movie collection manager for Usenet and BitTorrent users.
+    digest: 269513acf29eab6638c7e62e649b8d333d1046ac5ed00ef9cceb5934c43107ca
+    icon: https://w7.pngwing.com/pngs/514/119/png-transparent-the-pirate-bay-hd-logo.png
+    name: radarr
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/radarr-1.0.0.tgz
+    version: 1.0.0
+  sonarr:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.476166111Z"
+    description: Sonarr is a PVR for Usenet and BitTorrent users.
+    digest: 3fbabdbf6e353ef940e4f7bf759e44d35b5619ca1ef190bd0f3ae70dab570001
+    icon: https://static-00.iconduck.com/assets.00/sonarr-icon-1024x1024-wkay604k.png
+    name: sonarr
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/sonarr-1.0.0.tgz
+    version: 1.0.0
+  vaultwarden:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-06-05T16:11:06.4765397Z"
+    description: Vaultwarde is an unofficial Bitwarden compatible server written in
+      Rust.
+    digest: 92250e3ac1aba5e27afce4d8f89eee8080aefb70b36aa5f259f324b7e73a0cfc
+    icon: https://static-00.iconduck.com/assets.00/bitwarden-icon-2048x2048-dpfdlf2a.png
+    name: vaultwarden
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/vaultwarden-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-06-05T16:11:06.468416819Z"
