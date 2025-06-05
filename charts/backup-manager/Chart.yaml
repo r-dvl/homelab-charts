@@ -1,0 +1,7 @@
+apiVersion: v2
+name: backup-manager
+description: backup-manager is a companion application to Sonarr and Radarr that manages and downloads subtitles.
+type: application
+version: 1.0.0
+appVersion: "latest"
+icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/backup-manager-light.png

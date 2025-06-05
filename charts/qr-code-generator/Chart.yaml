@@ -1,0 +1,7 @@
+apiVersion: v2
+name: qr-code-generator
+description: qr-code-generator is a simple Docker image for running qr-code-generator.
+type: application
+version: 1.0.0
+appVersion: "latest"
+icon: https://static-00.iconduck.com/assets.00/cloudflare-icon-2048x926-mxn8koxq.png

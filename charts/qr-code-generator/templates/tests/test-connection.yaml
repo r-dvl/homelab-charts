@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "qr-code-generator.fullname" . }}-test-connection"
+  labels:
+    {{- include "qr-code-generator.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "qr-code-generator.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
