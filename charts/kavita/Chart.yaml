@@ -1,0 +1,7 @@
+apiVersion: v2
+name: kavita
+description: kavita is a companion application to Sonarr and Radarr that manages and downloads subtitles.
+type: application
+version: 1.0.0
+appVersion: "latest"
+icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/kavita-light.png
