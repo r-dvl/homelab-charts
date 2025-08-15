@@ -3,10 +3,10 @@ entries:
   backup-manager:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.053251086Z"
+    created: "2025-08-15T10:37:10.790409662Z"
     description: backup-manager is a companion application to Sonarr and Radarr that
       manages and downloads subtitles.
-    digest: 707ad77c3f98b4cd109a16f3badee603607f4c916f9a3c9f38a5aae5e5698469
+    digest: 78c25548b1059ed0c5234bc616125d18959d9804c97f21e83ce7c3ef9b0e391a
     icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/backup-manager-light.png
     name: backup-manager
     type: application
@@ -16,10 +16,10 @@ entries:
   bazarr:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.05370496Z"
+    created: "2025-08-15T10:37:10.790866518Z"
     description: Bazarr is a companion application to Sonarr and Radarr that manages
       and downloads subtitles.
-    digest: a89f7694363917fefeaca7edfee32514db737f9f2d0fb4b77bba6fb4d58167f6
+    digest: 779844afcc7d115cddae0c43f9d4d94752af0bf791e77e7bb942465142ff1c90
     icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/bazarr-light.png
     name: bazarr
     type: application
@@ -29,10 +29,10 @@ entries:
   calibre-web:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.054200392Z"
+    created: "2025-08-15T10:37:10.791361384Z"
     description: Calibre Web is a web app for browsing, reading and downloading eBooks
       using an existing Calibre database.
-    digest: 5d1b008579c008536f3359d2242d8e9b2e66ee0fc67bfb969b27e7c085f6b45b
+    digest: 73f1b97dcdfe21223d6b77b8d8a1ab9e235f2f6430c37d2dfb3813efa94f4469
     icon: https://th.bing.com/th/id/R.60f62bc8e9ee1df35780b8f96753f433?rik=ZIiztdszqSgXHw&pid=ImgRaw&r=0
     name: calibre-web
     type: application
@@ -42,10 +42,10 @@ entries:
   cloudflare-ddns:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.054580639Z"
+    created: "2025-08-15T10:37:10.791755923Z"
     description: Cloudflare Dynamic DNS is a simple Docker image for updating a Cloudflare
       DNS record with your external IP address.
-    digest: bf30a5dc27d8831608bd47f5d23024f3dd94aaf21fadbbb29967e12a9393b739
+    digest: 15ffd5f38db6df8f4b36fbef151b3933eed92928d9be36bc7f4059e6db8b74a3
     icon: https://static-00.iconduck.com/assets.00/cloudflare-icon-2048x926-mxn8koxq.png
     name: cloudflare-ddns
     type: application
@@ -55,9 +55,9 @@ entries:
   cloudflared:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.055051726Z"
+    created: "2025-08-15T10:37:10.792148879Z"
     description: Cloudflared is a simple Docker image for running Cloudflared.
-    digest: 78680cd94ef5b1849c340c13f5726307ca7f9a658f6691fe3f3dfa50bbbcdcf4
+    digest: ff215de12ec6c4d6d09a84937d58155fec38cd8a8e2b1f53dd136ecf0c322515
     icon: https://static-00.iconduck.com/assets.00/cloudflare-icon-2048x926-mxn8koxq.png
     name: cloudflared
     type: application
@@ -67,9 +67,9 @@ entries:
   immich:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.05569337Z"
+    created: "2025-08-15T10:37:10.792722073Z"
     description: Easily back up, organize, and manage your photos on your own server.
-    digest: 5f5deda08356e2580e82990031a1160bbd35c7f5628edadbbef4dac07c0a22af
+    digest: 3789a8af4d0843729bac782b8c8f94d7e39ba2ed60f06b5615baca05a7a1d703
     icon: https://avatars.githubusercontent.com/u/109746326?s=200&v=4
     name: immich
     type: application
@@ -79,9 +79,9 @@ entries:
   jackett:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.056103623Z"
+    created: "2025-08-15T10:37:10.793145866Z"
     description: API Support for your favorite torrent trackers.
-    digest: 0af3a5eaf63b0e8f2cc1bf60b0eced4b321dd1aa0e6fd531b0063692c825a344
+    digest: 16186d2fc185a3b03ad466dd4e6b43567a43eb9082d88b9c8589092711a5fad3
     icon: https://lignux.com/wp-content/uploads/2021/06/Jackett-logo.png
     name: jackett
     type: application
@@ -91,10 +91,10 @@ entries:
   jellyfin:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.056520539Z"
+    created: "2025-08-15T10:37:10.793563709Z"
     description: Jellyfin is a Free Software Media System that puts you in control
       of managing and streaming your media.
-    digest: 192a2f65970b4aeb8dcbececcac0961adbccc6df7938e8abb5986d5dad7875ae
+    digest: eafea4f9b48ab24a6cbaef577eb326aead7d751ad02ee34e54ea15f5e7ca9a1d
     icon: https://www.openhab.org/logos/jellyfin.png
     name: jellyfin
     type: application
@@ -104,21 +104,34 @@ entries:
   jellyseerr:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.056944798Z"
+    created: "2025-08-15T10:37:10.794535999Z"
     description: Request management and media discovery tool for the Jellyfin ecosystem.
-    digest: cfe50597f8adf5186aa6d55f7aeb2713c872819d2ccf43e98c9e0badd85838f3
+    digest: 8047e058c27804a85fe78e61f2e10685c9bff43294016b25950f2cf36e2f02b3
     icon: https://docs.armbian.com/images/JEL001.png
     name: jellyseerr
     type: application
     urls:
     - https://r-dvl.github.io/homelab-charts/jellyseerr-1.0.0.tgz
     version: 1.0.0
+  kavita:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-08-15T10:37:10.795182019Z"
+    description: kavita is a companion application to Sonarr and Radarr that manages
+      and downloads subtitles.
+    digest: 5826598dad8314fb56b8df4afec4cbd76446fcdb95fb210f77ea02c0309451ba
+    icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons@master/png/kavita-light.png
+    name: kavita
+    type: application
+    urls:
+    - https://r-dvl.github.io/homelab-charts/kavita-1.0.0.tgz
+    version: 1.0.0
   node-red:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.057325947Z"
+    created: "2025-08-15T10:37:10.795576438Z"
     description: Node-RED is a flow-based development tool for visual programming.
-    digest: 3d304da13552f181bfb3559e7a03da4b0bc9482d1097c8ca2a66a0f80a0db5f7
+    digest: 94db1e911ef9345bb05370f5a5065d268b078be4a316216cb830f5e0de1e0c06
     name: node-red
     type: application
     urls:
@@ -127,10 +140,10 @@ entries:
   plex:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.058289319Z"
+    created: "2025-08-15T10:37:10.79598835Z"
     description: Plex is a media server that allows you to organize and stream your
       media.
-    digest: a734dad4731d07b3f8caa7b33d51689a587b2997df4d77f290eb99ad8b80810f
+    digest: 14eb941282d9caff6a956e154a0a7e9a2f9620d562be27bfd9621eca8f819c2c
     icon: https://th.bing.com/th/id/OIP.D15448TzysfzP93bOo1auQAAAA?rs=1&pid=ImgDetMain
     name: plex
     type: application
@@ -140,9 +153,9 @@ entries:
   prowlarr:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.058906608Z"
+    created: "2025-08-15T10:37:10.796392196Z"
     description: Prowlarr is a newsgroup indexer manager.
-    digest: 25ca3aa54bfa075f6ce6d0e6b9f44c16fca393dcaee321e46ea1c951aaad4133
+    digest: 99cba89a4236609902a7dc6e19c377d93c7f0f29e5e0f031fd43b2f5a193d90c
     icon: https://static-00.iconduck.com/assets.00/prowlarr-icon-1024x1024-vyf0hy1t.png
     name: prowlarr
     type: application
@@ -152,10 +165,10 @@ entries:
   qbittorrent:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.05933759Z"
+    created: "2025-08-15T10:37:10.796802203Z"
     description: QBittorrent is a free, open-source, fast and lightweight P2P BitTorrent
       client.
-    digest: 0822112731cea0d62ad2a7898ce6bbd1063ad7987fccd0104a3ce07058619c72
+    digest: 275d02653008a7f0a6faee9dbfe12b4b74f67ad9d869ce36fc4fea82d4bc307a
     icon: https://static-00.iconduck.com/assets.00/qbittorrent-icon-2048x2048-kbb7ayst.png
     name: qbittorrent
     type: application
@@ -165,9 +178,9 @@ entries:
   qr-code-generator:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.059696488Z"
+    created: "2025-08-15T10:37:10.797170233Z"
     description: qr-code-generator is a simple Docker image for running qr-code-generator.
-    digest: 71f2edc347ace02f1aeca25f6d13216bd9ed6596a3e57acd2287293eb0145476
+    digest: 7549b3c070f777be9c07c3eab37ae10dde823418d16c0535b16d2f66dd86df00
     icon: https://static-00.iconduck.com/assets.00/cloudflare-icon-2048x926-mxn8koxq.png
     name: qr-code-generator
     type: application
@@ -177,9 +190,9 @@ entries:
   radarr:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.060118803Z"
+    created: "2025-08-15T10:37:10.797576974Z"
     description: Radarr is a movie collection manager for Usenet and BitTorrent users.
-    digest: d88d892c30581f6170bf1447b4a3d7bb10c27a48db1a9a7bebf674d57872e435
+    digest: 9be1b7d5e396305277ba6f809da2b05a660d900882919b9d39a85cc82306c539
     icon: https://w7.pngwing.com/pngs/514/119/png-transparent-the-pirate-bay-hd-logo.png
     name: radarr
     type: application
@@ -189,9 +202,9 @@ entries:
   sonarr:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.060516634Z"
+    created: "2025-08-15T10:37:10.797987774Z"
     description: Sonarr is a PVR for Usenet and BitTorrent users.
-    digest: b21992bf3dff08e2607a482c3c2b51adc01e8054c8d3474840dbd4ea49ccca79
+    digest: 8ad472939cdd081777df430f723174a1f47bf058d5d1b7b5b73752c9e1bed8ff
     icon: https://static-00.iconduck.com/assets.00/sonarr-icon-1024x1024-wkay604k.png
     name: sonarr
     type: application
@@ -201,10 +214,10 @@ entries:
   vaultwarden:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.060893595Z"
+    created: "2025-08-15T10:37:10.798355132Z"
     description: Vaultwarde is an unofficial Bitwarden compatible server written in
       Rust.
-    digest: d65326040b3c3aca396da36a120c025c6356d6681e5cc4caff46cc4848b4d6e3
+    digest: 21f88417738816e0dbd9036de97f38a686721744a31e68e4ef617db7d8414758
     icon: https://static-00.iconduck.com/assets.00/bitwarden-icon-2048x2048-dpfdlf2a.png
     name: vaultwarden
     type: application
@@ -214,14 +227,14 @@ entries:
   whisper:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-08-04T14:17:27.061274223Z"
+    created: "2025-08-15T10:37:10.79874948Z"
     description: whisper is a companion application to Sonarr and Radarr that manages
       and downloads subtitles.
-    digest: d92c5b2120ea15a1ba6defbee52b88e76bf77325efb7a7b9020c6766cd48e064
+    digest: fcfeb2ed867ce05d6205952d519b56511333b1c93120029a0e72ccb376baddcb
     icon: https://upload.wikimedia.org/wikipedia/commons/6/66/OpenAI_logo_2025_%28symbol%29.svg
     name: whisper
     type: application
     urls:
     - https://r-dvl.github.io/homelab-charts/whisper-1.0.0.tgz
     version: 1.0.0
-generated: "2025-08-04T14:17:27.052625822Z"
+generated: "2025-08-15T10:37:10.789793738Z"
