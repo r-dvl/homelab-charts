@@ -1,0 +1,7 @@
+apiVersion: v2
+name: flaresolverr
+description: FlareSolverr is a proxy server to bypass Cloudflare and DDoS-GUARD protection, used by Prowlarr/Jackett.
+type: application
+version: 1.0.0
+appVersion: "latest"
+icon: https://raw.githubusercontent.com/FlareSolverr/FlareSolverr/master/resources/flaresolverr_logo.svg

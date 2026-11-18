@@ -1,0 +1,136 @@
+# Default values for flaresolverr.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+replicaCount: 1
+revisionHistoryLimit: 2
+
+# This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
+image:
+  repository: ghcr.io/flaresolverr/flaresolverr
+  # This sets the pull policy for images.
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+# This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+imagePullSecrets: []
+# This is to override the chart name.
+nameOverride: ""
+fullnameOverride: ""
+
+#This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# This is for setting Kubernetes Annotations to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/ 
+podAnnotations: {}
+# This is for setting Kubernetes Labels to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+podLabels: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+# This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+service:
+  # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+  type: ClusterIP
+  # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
+  port: 8191
+
+# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+ingress:
+  # FlareSolverr is only consumed internally by Prowlarr (http://flaresolverr.arr.svc.cluster.local:8191),
+  # it has no auth, so keep it disabled unless you really need it.
+  enabled: false
+  className: "traefik"
+  annotations:
+    cert-manager.io/cluster-issuer: "le-cluster-issuer"
+  hosts:
+    - host: flaresolverr.change.me
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - flaresolverr.change.me
+      secretName: flaresolverr-tls
+
+# Chromium inside FlareSolverr is memory hungry while solving challenges
+# (the in-memory /dev/shm volume also counts against this limit). 1Gi got OOMKilled.
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    memory: 2Gi
+
+#This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 30
+  timeoutSeconds: 10
+readinessProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 10
+  periodSeconds: 15
+  timeoutSeconds: 10
+
+# Additional volumes on the output Deployment definition.
+# Chromium needs a bigger /dev/shm than the default 64Mi
+volumes:
+  - name: dshm
+    emptyDir:
+      medium: Memory
+      sizeLimit: 512Mi
+
+configMap:
+  enabled: true
+  # Any key here is exposed as env var. See https://github.com/FlareSolverr/FlareSolverr#environment-variables
+  data:
+    LOG_LEVEL: "info"
+    LOG_HTML: "false"
+    CAPTCHA_SOLVER: "none"
+    TZ: "Europe/Madrid"
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts:
+  - name: dshm
+    mountPath: /dev/shm
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
