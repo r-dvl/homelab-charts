@@ -10,7 +10,7 @@ revisionHistoryLimit: 2
 image:
   repository: linuxserver/jackett
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -60,17 +60,18 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "traefik"
+  # Public access through Cloudflare Tunnel
+  className: "cloudflare-tunnel"
   annotations:
     cert-manager.io/cluster-issuer: "le-cluster-issuer"
   hosts:
-    - host: jackett.change.me
+    - host: jackett.rdvl.net
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - jackett.change.me
+        - jackett.rdvl.net
       secretName: jackett-tls
 
 resources: {}
@@ -103,8 +104,8 @@ volumes:
 configMap:
   enabled: true
   data:
-    PUID: "1000"
-    PGID: "1000"
+    PUID: "0"
+    PGID: "0"
     TZ: "Europe/Madrid"
 
 # Additional volumeMounts on the output Deployment definition.

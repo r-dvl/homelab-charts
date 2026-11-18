@@ -10,7 +10,7 @@ revisionHistoryLimit: 2
 image:
   repository: linuxserver/jellyfin
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -35,7 +35,7 @@ serviceAccount:
 # This is for setting Kubernetes Annotations to a Pod.
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/ 
 podAnnotations:
-  hostname: jellyfin.change.me
+  hostname: jellyfin.rdvl.net
 # This is for setting Kubernetes Labels to a Pod.
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 podLabels: {}
@@ -61,18 +61,38 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "traefik"
+  # Public access through Cloudflare Tunnel
+  className: "cloudflare-tunnel"
   annotations:
     cert-manager.io/cluster-issuer: "le-cluster-issuer"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
   hosts:
-    - host: jellyfin.change.me
+    - host: jellyfin.rdvl.net
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - jellyfin.change.me
+        - jellyfin.rdvl.net
       secretName: jellyfin-tls
+
+
+# Second ingress for LAN access through Traefik (same host, resolved locally to the cluster)
+ingressLocal:
+  enabled: true
+  className: "traefik"
+  annotations:
+    cert-manager.io/cluster-issuer: "le-cluster-issuer"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  hosts:
+    - host: jellyfin.rdvl.net
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - jellyfin.rdvl.net
+      secretName: jellyfin-local-tls
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -108,9 +128,10 @@ volumes:
 configMap:
   enabled: true
   data:
-    PUID: "1000"
-    PGID: "1000"
+    PUID: "0"
+    PGID: "0"
     TZ: "Europe/Madrid"
+    JELLYFIN_PublishedServerUrl: "192.168.1.231"
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
