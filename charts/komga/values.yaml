@@ -73,6 +73,24 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+
+# Second ingress for LAN access through Traefik (same host, resolved locally to the cluster)
+ingressLocal:
+  enabled: true
+  className: "traefik"
+  annotations:
+    cert-manager.io/cluster-issuer: "le-cluster-issuer"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  hosts:
+    - host: komga.rdvl.net
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - komga.rdvl.net
+      secretName: komga-local-tls
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

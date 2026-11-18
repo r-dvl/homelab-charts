@@ -60,18 +60,37 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "traefik"
+  # Public access through Cloudflare Tunnel
+  className: "cloudflare-tunnel"
   annotations:
     cert-manager.io/cluster-issuer: "le-cluster-issuer"
   hosts:
-    - host: calibre.change.me
+    - host: calibre.rdvl.net
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - calibre.change.me
+        - calibre.rdvl.net
       secretName: calibre-tls
+
+
+# Second ingress for LAN access through Traefik (same host, resolved locally to the cluster)
+ingressLocal:
+  enabled: true
+  className: "traefik"
+  annotations:
+    cert-manager.io/cluster-issuer: "le-cluster-issuer"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  hosts:
+    - host: calibre.rdvl.net
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - calibre.rdvl.net
+      secretName: calibre-web-local-tls
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

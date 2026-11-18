@@ -10,7 +10,7 @@ revisionHistoryLimit: 2
 image:
   repository: linuxserver/sonarr
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -60,18 +60,37 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "traefik"
+  # Public access through Cloudflare Tunnel
+  className: "cloudflare-tunnel"
   annotations:
     cert-manager.io/cluster-issuer: "le-cluster-issuer"
   hosts:
-    - host: sonarr.change.me
+    - host: sonarr.rdvl.net
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - sonarr.change.me
+        - sonarr.rdvl.net
       secretName: sonarr-tls
+
+
+# Second ingress for LAN access through Traefik (same host, resolved locally to the cluster)
+ingressLocal:
+  enabled: true
+  className: "traefik"
+  annotations:
+    cert-manager.io/cluster-issuer: "le-cluster-issuer"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  hosts:
+    - host: sonarr.rdvl.net
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - sonarr.rdvl.net
+      secretName: sonarr-local-tls
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -107,8 +126,8 @@ volumes:
 configMap:
   enabled: true
   data:
-    PUID: "1000"
-    PGID: "1000"
+    PUID: "0"
+    PGID: "0"
     TZ: "Europe/Madrid"
 
 # Additional volumeMounts on the output Deployment definition.
@@ -118,7 +137,8 @@ volumeMounts:
   - name: data-volume
     mountPath: /DATA
 
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/arch: amd64
 
 tolerations: []
 

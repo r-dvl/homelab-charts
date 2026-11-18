@@ -10,7 +10,7 @@ revisionHistoryLimit: 2
 image:
   repository: linuxserver/bazarr
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -60,18 +60,45 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "traefik"
+  # Public access through Cloudflare Tunnel
+  className: "cloudflare-tunnel"
   annotations:
     cert-manager.io/cluster-issuer: "le-cluster-issuer"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Bazarr"
+    gethomepage.dev/description: "Indexers"
+    gethomepage.dev/group: "Arr"
+    gethomepage.dev/icon: "bazarr.png"
+    gethomepage.dev/widget.type: "bazarr"
+    gethomepage.dev/widget.url: "https://bazarr.rdvl.net"
+    # gethomepage.dev/widget.key is a secret: set it at install time (--set), do not commit it
   hosts:
-    - host: bazarr.change.me
+    - host: bazarr.rdvl.net
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - bazarr.change.me
+        - bazarr.rdvl.net
       secretName: bazarr-tls
+
+
+# Second ingress for LAN access through Traefik (same host, resolved locally to the cluster)
+ingressLocal:
+  enabled: true
+  className: "traefik"
+  annotations:
+    cert-manager.io/cluster-issuer: "le-cluster-issuer"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  hosts:
+    - host: bazarr.rdvl.net
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - bazarr.rdvl.net
+      secretName: bazarr-local-tls
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -118,7 +145,8 @@ configMap:
     PGID: "0"
     TZ: "Europe/Madrid"
 
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/arch: amd64
 
 tolerations: []
 

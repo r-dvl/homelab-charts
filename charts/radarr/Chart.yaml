@@ -2,6 +2,6 @@ apiVersion: v2
 name: radarr
 description: Radarr is a movie collection manager for Usenet and BitTorrent users.
 type: application
-version: 1.0.0
+version: 1.1.0
 appVersion: "latest"
 icon: https://w7.pngwing.com/pngs/514/119/png-transparent-the-pirate-bay-hd-logo.png
