@@ -19,6 +19,7 @@ This repository contains Helm charts and docs for self-hosted applications in my
 - **Calibre Web**: A web app providing a clean interface for browsing, reading, and downloading eBooks using an existing Calibre database.
 - **Cloudflare-ddns**: A tool to update Cloudflare DNS records dynamically.
 - **Cloudflared**: A tunneling daemon that proxies traffic from Cloudflare to your local server.
+- **FlareSolverr**: A proxy server to bypass Cloudflare and DDoS-GUARD protection, used by Prowlarr and Jackett.
 - **Jackett**: A proxy server that translates queries from apps like Sonarr and Radarr into tracker-site-specific http queries.
 - **Jellyfin**: An open-source media server that allows you to manage and stream your media.
 - **Jellyseerr**: A free and open-source software application for managing requests for your media library.

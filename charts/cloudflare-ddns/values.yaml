@@ -99,6 +99,7 @@ affinity: {}
 configMap:
   enabled: true
   data:
+    # Secret: set it at install time (--set configMap.data.API_KEY=...), do not commit it
     API_KEY: "your-cloudflare-api-key"
-    ZONE: "example.com"
-    SUBDOMAIN: "optional-subdomain"
+    ZONE: "rdvl.net"
+    SUBDOMAIN: ""
